@@ -1,0 +1,17 @@
+{
+  "name": "GTD",
+  "displayName": "GTD",
+  "expo": {
+    "name": "GTD",
+    "slug": "GTD",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
