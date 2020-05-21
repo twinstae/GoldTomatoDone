@@ -15,7 +15,7 @@ Node and React Native App for GTD and Pomodoro Timer and much More!
 - 목록에서 선택하면 타이머로 이동
 
 ## 제약 조건
-0. 순수 자바스크립트로 백엔드 Node.js 프런트 엔드 React.js를 이용해 구현한다. ☆
+0. 순수 자바스크립트로 백엔드 Node.js X 코틀린, 프런트 엔드 React.js를 이용해 구현한다. ☆
 1. 안드로이드로만 구현한다. (아이폰, 웹X)
 2. 따라서 네트워크 동기화 없이 로컬에서만 작동한다.
 3. 데이터베이스는 로컬 SQLlite를 이용하되, 추후에 migration이 가능하도록 user 컬럼을 넣는다.
