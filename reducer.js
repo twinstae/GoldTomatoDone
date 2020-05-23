@@ -8,7 +8,7 @@ const BREAK_TIME = 'BREAK_TIME';
 const END_BREAK = 'END_BREAK';
 const POP_DOWN = 'POP_DOWN';
 
-const TIMER_DURATION = 60 * 15;
+const TIMER_DURATION = 60 * 0.1;
 //action creator
 
 function startTimer(){   return {type: START_TIMER  }} 
@@ -57,7 +57,6 @@ function applyStartTimer(state){
     return {
         ...state,
         isPlaying:true,
-        elapsedTime: 0,
         popupVisible : true
     };
 }
@@ -65,7 +64,6 @@ function applyRestartTimer(state){
     return {
         ...state,
         isPlaying:false,
-        elapsedTime: 0
     };
 }
 function applyAddSecond(state){
