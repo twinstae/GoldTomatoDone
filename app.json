@@ -2,8 +2,8 @@
   "name": "GTD",
   "displayName": "GTD",
   "expo": {
-    "name": "GTD",
-    "slug": "GTD",
+    "name": "GoldTomatoDone",
+    "slug": "goldtomatodone",
     "version": "1.0.0",
     "platforms": [
       "ios",
@@ -12,6 +12,8 @@
     ],
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "description": "",
+    "githubUrl": "https://github.com/twinstae/GoldTomatoDone"
   }
 }
