@@ -89,11 +89,6 @@ class Timer extends Component {
                         <Button iconName = "stop-circle" onPress={restartTimer}/>
                         : null}
 				</View>
-                <View>
-                    <Text>
-                        {🍅}
-                    </Text>
-                </View>
 			</View>
 		);
 	}
