@@ -8,7 +8,7 @@ const BREAK_TIME = 'BREAK_TIME';
 const END_BREAK = 'END_BREAK';
 const POP_DOWN = 'POP_DOWN';
 
-const TIMER_DURATION = 60 * 0.1;
+const TIMER_DURATION = 60 * 15;
 //action creator
 
 function startTimer(){   return {type: START_TIMER  }} 
