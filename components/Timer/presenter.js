@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, StatusBar } from 'react-native';
+import { Platform, StyleSheet, Text, TextInput, View, StatusBar } from 'react-native';
 
 import Button from '../Button';
 import Tomato from '../Tomato';
 import { Audio } from 'expo-av';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import * as Animatable from 'react-native-animatable';
+import Confetti from 'react-native-confetti';
+
 
 function formatTime(time) {
   const minutes = Math.floor(time / 60);
@@ -16,23 +18,21 @@ function formatTime(time) {
 async function play() {
   try {
     const soundObject = new Audio.Sound();
-    await soundObject.loadAsync(require('../../assets/sounds/izone_alarm.mp3'));
+    await soundObject.loadAsync(require('../../assets/sounds/Twinkle.mp3'));
     await soundObject.playAsync();
   } catch (error) {
     console.log("sound error")
   }
 }
 
-var fSize = '50px';
-var mSize = '10px';
-if (Platform.OS === 'android') {
-  fSize = 50;
-  mSize = 10;
-}
+var fSize = 50;
+var mSize = 10;
 
 var tomatoBasket = [];
 
+
 class Timer extends Component {
+    
   componentDidUpdate(prevProps, prevState) {
     //버튼을 누르면...
     if (prevProps.isPlaying === false && this.props.isPlaying === true) {
@@ -55,11 +55,16 @@ class Timer extends Component {
         } else {
           tomatoBasket.push({isGold:this.props.isGold});
           this.props.breakTime();
+          this._confettiView.startConfetti();
         }
-          
+
         this.props.turnToRed();
       }
     }
+  }
+    
+  componentDidMount() {
+    
   }
 
   render() {
@@ -84,18 +89,26 @@ class Timer extends Component {
 
     return (
       <View style={bgStyle}>
+        
+        <Confetti ref={(node) => this._confettiView = node} />
+        
         <View style={styles.pomo}>
           <AnimatedCircularProgress 
-             size={300} width={20} rotation = {90} fill={(100 * elapsedTime) / timerDuration} tintColor={bgColor} backgroundColor="white">
+             size={300} width={20} rotation = {0} fill={(100 * elapsedTime) / timerDuration} tintColor={bgColor} backgroundColor="white">
             {fill => (
               <Text style={styles.time}> {formatTime(timerDuration - elapsedTime)} </Text>
             )}
           </AnimatedCircularProgress>
         </View>
+        <TextInput
+          style={styles.goal}
+        />
+            
         <View style={styles.pomo}>
           {!isPlaying ? ( <Button iconName="play-circle" onPress={startTimer} /> ) : null}
           {isPlaying ?  ( <Button iconName="pause-circle" onPress={restartTimer} /> ) : null}
         </View>
+                         
         <View style={styles.basket}>
           {tomatoBasket.map((tomato, i) => {
             if(i == 0){
@@ -138,6 +151,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: 'white',
+    borderRadius: mSize,
+  },
+  goal: {
+    margin: mSize,
+    padding: mSize,
+    width: 300,
+    fontFamily: 'NanumSquareRoundR',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: 20,
     backgroundColor: 'white',
     borderRadius: mSize,
   },
